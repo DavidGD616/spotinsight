@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
+import { Login } from './pages';
 
 const backendUrl = 'http://localhost:8888'
 
@@ -15,11 +16,9 @@ function App() {
   }, []);
 
   return (
-    <div className='bg-red-900'>
-      <a href={backendUrl + "/login"}>
-        Log in to Spotify
-      </a>
-    </div>
+    <>
+      <Login />
+    </>
   )
 }
 
