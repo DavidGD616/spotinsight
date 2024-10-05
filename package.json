@@ -11,7 +11,6 @@
     "build": "NODE_ENV=production cd client/ && npm install && npm run build",
     "start-server": "node index.js"
   },
-  
   "keywords": [],
   "author": "David Guerrero <davidguerrerodiaz12@gmail.com>",
   "license": "ISC",
