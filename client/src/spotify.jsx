@@ -101,9 +101,70 @@ const getAccessToken = () => {
 export const accessToken = getAccessToken();
 
 // Global request headers
-axios.defaults.baseURL = 'https://api.spotify.com/v1';
-axios.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
-axios.defaults.headers['Content-Type'] = 'application/json';
+// axios.defaults.baseURL = 'https://api.spotify.com/v1';
+// axios.defaults.headers['Authorization'] = `Bearer ${accessToken}`;
+// axios.defaults.headers['Content-Type'] = 'application/json';
 
-// Profile
-export const getCurrentUserProfile = () => axios.get('/me');
+const headers = {
+    Authorization: `Bearer ${accessToken}`,
+    'Content-Type': 'application/json',
+}
+
+// Get User
+export const getUser = () => axios.get('https://api.spotify.com/v1/me', { headers });
+
+// Get User Followed Artist
+export const getFollowing = () =>
+    axios.get('/me/following?type=artist');
+
+// Get a List of User Playlists
+export const getPlaylists = () => axios.get('/me/playlists');
+
+// Get User Recently Played Tracks
+export const getRecentlyPlayed = () =>
+    axios.get('/me/player/recently-played');
+
+// Get User Top Artist
+export const getTopArtistsShort = () =>
+    axios.get('/me/top/artists?time_range=short_term&limit=50');
+export const getTopArtistsMedium = () =>
+    axios.get('/me/top/artists?time_range=medium_term&limit=50');
+export const getTopArtistsLong = () =>
+    axios.get('/me/top/artists?time_range=long_term&limit=50');
+
+// Get User Top Tracks
+export const getTopTracksShort = () =>
+    axios.get('/me/top/tracks?time_range=short_term&limit=50');
+export const getTopTracksMedium = () =>
+    axios.get('/me/top/tracks?time_range=medium_term&limit=50');
+export const getTopTracksLong = () =>
+    axios.get('/me/top/tracks?time_range=long_term&limit=50');
+
+// Get an artist
+export const getArtist = artistId =>
+    axios.get(`/artists/${artistId}`);
+
+// Check if User Follows Artists
+export const doesUserFollowArtist = artistId =>
+    axios.get(`/me/following/contains?type=artist&ids=${artistId}`);
+
+// Check if User Follows a Playlist
+export const doesUserFollowPlaylist = (playlistId, userId) =>
+    axios.get(`/playlists/${playlistId}/followers/contains?ids=${userId}`);
+
+// Get a Playlist
+export const getPlaylist = playlistId =>
+    axios.get(`/playlists/${playlistId}`);
+
+export const getUserInfo = () =>
+    axios
+        .all([getUser(), getFollowing(), getPlaylists(), getTopArtistsLong(), getTopTracksLong()])
+        .then(
+            axios.spread((user, followedArtists, playlists, topArtists, topTracks) => ({
+                user: user.data,
+                followedArtists: followedArtists.data,
+                playlists: playlists.data,
+                topArtists: topArtists.data,
+                topTracks: topTracks.data,
+            })),
+        );
