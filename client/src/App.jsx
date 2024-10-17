@@ -1,23 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom'
+import { accessToken, logout } from './spotify';
+import { Login, Profile } from './pages';
 import './App.css';
-import { Login } from './pages';
-
-const backendUrl = 'http://localhost:8888'
 
 function App() {
-  useEffect(() => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const accessToken = urlParams.get('access_token');
-    const refreshToken = urlParams.get('refresh_token');
+  const [token, setToken] = useState(null);
 
-    console.log(accessToken);
-    console.log(refreshToken);
+  useEffect(() => {
+    setToken(accessToken);
   }, []);
 
   return (
     <>
-      <Login />
+      {!token ? (
+        <Login />
+      ) : (
+        <>
+          <button onClick={logout}>Log Out</button>
+          <Router>
+            <Routes>
+              <Route path='/' element={<Profile />} />
+            </Routes>
+          </Router>
+        </>
+      )}
     </>
   )
 }
