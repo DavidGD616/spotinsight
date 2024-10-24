@@ -107,3 +107,9 @@ axios.defaults.headers['Content-Type'] = 'application/json';
 
 // Get User
 export const getUser = () => axios.get('/me');
+
+// Get User Folllowed Artists
+export const getFollowing = () => axios.get('/me/following?type=artist');
+
+// Get User Playlists
+export const getPlaylists = () => axios.get('/me/playlists');
