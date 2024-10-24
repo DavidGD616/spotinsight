@@ -32,6 +32,15 @@ const NumLabel = ({ children }) => (
   </p>
 );
 
+const LogoutButton = ({ children }) => (
+  <a 
+    onClick={logout}
+    className="bg-transparent text-white border border-white rounded-[30px] mt-[30px] px-[30px] py-[12px] text-[12px] font-bold tracking-[1px] uppercase text-center hover:bg-white hover:text-[#181818] focus:bg-white focus:text-[#181818] cursor-pointer">
+    {children}
+  </a>
+);
+
+
 // User Component *********************************************
 const User = () => {
   const [user, setUser] = useState(null);
@@ -58,7 +67,8 @@ const User = () => {
   return (
     <>
       {user ? (
-        <>
+        <main className="w-full mx-auto max-w-[1400px] min-h-screen p-[30px_25px] sm:p-[50px_40px] md:p-[60px_50px] lg:p-[80px]">
+          <header className="flex justify-center items-center flex-col relative">
           <Avatar>
             {user.images.length > 0 ? (
               <img
@@ -93,7 +103,9 @@ const User = () => {
               </Stat>
             )}
           </Stats>
-        </>
+          <LogoutButton>Logout</LogoutButton>
+          </header>
+        </main>
       ) : (
         <div>Loading ....</div>
       )}
