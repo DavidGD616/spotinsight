@@ -4,7 +4,7 @@ import {
   Routes,
   Route,
 } from 'react-router-dom'
-import { accessToken, logout } from './spotify';
+import { accessToken } from './spotify';
 import { Login, Profile } from './pages';
 import './App.css';
 
@@ -21,7 +21,6 @@ function App() {
         <Login />
       ) : (
         <>
-          <button onClick={logout}>Log Out</button>
           <Router>
             <Routes>
               <Route path='/' element={<Profile />} />
