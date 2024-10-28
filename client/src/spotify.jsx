@@ -113,3 +113,11 @@ export const getFollowing = () => axios.get('/me/following?type=artist');
 
 // Get User Playlists
 export const getPlaylists = () => axios.get('/me/playlists');
+
+// Get User Top Artists
+export const getTopArtists = (time_range = 'short_term') =>
+    axios.get(`/me/top/artists?time_range=${time_range}&limit=50`);
+
+// Get User Top Tracks
+export const getTopTracks = (time_range = 'short_term') =>
+    axios.get(`/me/top/tracks?time_range=${time_range}&limit=50`)
