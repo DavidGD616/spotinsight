@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { User } from "../components";
 import { getTopArtists, getTopTracks } from "../spotify";
 import { catchErrors } from "../utils";
+import TrackItem from "../components/TrackItem";
 
 const Preview = ({ children }) => (
   <section className="block mt-[70px] md:grid md:grid-cols-2 md:gap-[70px] md:mt-[100px] w-full">
@@ -98,29 +99,15 @@ const Profile = (profile) => {
                   See More
                 </Link>
                 </TracklistHeading>
-                <div>
+                <ul>
                   {topTracks ? (
-                    <ul>
-                      {topTracks.items.slice(0, 10).map((track, index) => (
-                        <Artist key={index}>
-                           <Link
-                                className="inline-block relative w-[50px] min-w-[50px] mr-[20px]"
-                                >
-                                    {track.album.images.length && 
-                                    <img 
-                                    className="w-[50px] min-w-[50px] h-[50px] rounded-full"
-                                    src={track.album.images[2].url} alt="Track" />}
-                                </Link>
-                                <Link className="flex-grow" to={`/artist/${track.id}`}>
-                                    <span className="border-b border-transparent hover:border-white focus:border-white">{track.name}</span>
-                                </Link>
-                        </Artist>
-                      ))}
-                    </ul>
+                    topTracks.items
+                    .slice(0, 10)
+                    .map((track, index) => <TrackItem track={track} key={index} />)
                   ) : (
                     <div>Loading...</div>
                   )}
-                </div>
+                </ul>
             </Tracklist>
           </Preview>
         </main>

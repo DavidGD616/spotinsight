@@ -28,7 +28,7 @@ export const logout = () => {
 
 // Checks if token has expired
 const hasTokenExpired = () => {
-    const { accessToken, timestamp, expireTime } = LOCALSTORAGE_KEYS;
+    const { accessToken, timestamp, expireTime } = LOCALSTORAGE_VALUES;
     if (!accessToken || !timestamp) {
         return false;
     }
