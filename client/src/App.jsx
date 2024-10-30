@@ -7,7 +7,6 @@ import {
 import { accessToken } from './spotify';
 import { Login, Profile } from './pages';
 import './App.css';
-import { Nav } from './components';
 
 function App() {
   const [token, setToken] = useState(null);
@@ -22,7 +21,6 @@ function App() {
         <Login />
       ) : (
         <>
-        <Nav />
           <Router>
             <Routes>
               <Route path='/' element={<Profile />} />
