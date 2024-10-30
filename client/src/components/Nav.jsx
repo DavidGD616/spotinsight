@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { IconSpotInsight } from "../assets";
 
 const Nav = () => (
@@ -6,6 +7,10 @@ const Nav = () => (
     <div className="hidden md:block mt-[30px] transition-all duration-250 ease-[cubic-bezier(0.3,0,0.4,1)]">
         <IconSpotInsight />
     </div>
+    <ul className="flex flex-row items-end justify-center md:flex-col">
+        <li className="text-[#9B9B9B] text-[11px] h-full flex-grow flex-basis-full md:flex-grow md:flex-basis-full md:h-full">
+        </li>
+    </ul>
   </nav>
 );
 
