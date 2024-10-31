@@ -51,7 +51,7 @@ const Profile = (profile) => {
   return (
     <>
       {profile ? (
-        <main className="w-full mx-auto max-w-[1400px] min-h-screen p-[30px_25px] sm:p-[50px_40px] md:p-[60px_50px] lg:p-[80px]">
+        <main className="w-full mx-auto max-w-[1400px] min-h-screen py-[30px] px-[25px] md:py-[50px] md:pl-[150px] md:pr-[40px] lg:py-[60px] lg:pr-[50px] xl:py-[80px] pb-[70px]">
           <User />
           <Preview>
             <Tracklist>
