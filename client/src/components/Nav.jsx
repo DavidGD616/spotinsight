@@ -10,6 +10,7 @@ const Nav = () => (
     <ul className="flex flex-row items-end justify-center md:flex-col w-full">
         <li className="w-full text-[#9B9B9B] text-[11px] h-full grow basis-full">
             <Link
+            to="/"
             className="w-full h-full flex justify-center items-center flex-col p-0 border-l-0 border-t-[3px] border-transparent
             md:block py-[15px] px-0 md:border-l-[5px] md:border-transparent hover:text-white focus:text-white active:text-white hover:bg-[#181818]
             focus:bg-[#181818] active:bg-[#181818] hover:border-t-[#1ed760] focus:border-t-[#1ed760] active:border-t-[#1ed760] md:hover:border-l-[#1ed760]

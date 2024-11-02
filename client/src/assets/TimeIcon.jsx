@@ -3,7 +3,7 @@ import React from "react";
 const TimeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-[20px] text-white"
+    className="h-[20px]"
     viewBox="0 0 51 52"
     fill="currentColor"
   >
