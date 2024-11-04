@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import { IconSpotInsight, MicrophoneIcon, MusicIcon, PlaylistIcon, TimeIcon, UserIcon } from "../assets";
+import { NavLink } from "react-router-dom";
+import { GithubIcon, IconSpotInsight, MicrophoneIcon, MusicIcon, PlaylistIcon, TimeIcon, UserIcon } from "../assets";
 
 const isActive = ({ isCurrent }) => (isCurrent ? { className: 'active' } : null);
 
@@ -106,6 +106,14 @@ const Nav = () => (
             </NavLink>
         </li>
     </ul>
+    <div className="hidden md:block md:text-[#9B9B9B] md:w-[30px] md:h-[30px] md:mb-[30px]">
+      <NavLink
+      to='https://github.com/DavidGD616/spotinsight'
+      className='hover:text-[#509bf5] focus:text-[#509bf5] active:text-[#509bf5]'
+      >
+        <GithubIcon />
+      </NavLink>
+    </div>
   </nav>
 );
 
