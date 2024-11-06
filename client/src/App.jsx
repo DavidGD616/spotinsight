@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { accessToken } from "./spotify";
-import { Login, Profile } from "./pages";
+import { Login, Profile, TopArtists } from "./pages";
 import "./App.css";
 import { Nav } from "./components";
 
@@ -22,6 +22,7 @@ function App() {
             <Nav />
             <Routes>
               <Route path="/" element={<Profile />} />
+              <Route path="artists" element={<TopArtists />} />
             </Routes>
           </Router>
         </>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { User } from "../components";
+import { Main, User } from "../components";
 import { getTopArtists, getTopTracks } from "../spotify";
 import { catchErrors } from "../utils";
 import TrackItem from "../components/TrackItem";
@@ -51,7 +51,7 @@ const Profile = (profile) => {
   return (
     <>
       {profile ? (
-        <main className="w-full mx-auto max-w-[1400px] min-h-screen py-[30px] px-[25px] md:py-[50px] md:pl-[150px] md:pr-[40px] lg:py-[60px] lg:pr-[50px] xl:py-[80px] pb-[70px]">
+        <Main>
           <User />
           <Preview>
             <Tracklist>
@@ -110,7 +110,7 @@ const Profile = (profile) => {
                 </ul>
             </Tracklist>
           </Preview>
-        </main>
+        </Main>
       ) : (
         <div>Loading...</div>
       )}
