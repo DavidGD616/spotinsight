@@ -21,22 +21,40 @@ const TopArtists = () => {
     return (
         <Main>
             <header className="block md:flex md:justify-between md:items-center">
-                <h2 className="m-0">Top Artists</h2>
-                <div className="justify-around mt-[30px] md:flex md:mr-[-11px]">
+                <h2 className="m-0 text-center">Top Artists</h2>
+                <div className="flex justify-around mt-[30px] md:mr-[-11px]">
                     <button
+                    className={`bg-transparent font-medium text-[14px] p-[10px] ${
+                        activeRange === 'short' ? 'text-white' : 'text-[#b3b3b3]'
+                    }`}
                     onClick={() => setActiveRange('short')}
                     >
-                        <span>Last 4 weeks</span> 
+                        <span
+                        className={`pb-[2px] leading-[1.5] whitespace-nowrap border-b
+                            ${activeRange === 'short' ? 'border-white' : 'border-transparent'}`}
+                        >Last 4 weeks</span> 
                     </button>
                     <button
+                    className={`bg-transparent font-medium text-[14px] p-[10px] ${
+                        activeRange === 'medium' ? 'text-white' : 'text-[#b3b3b3]'
+                    }`}
                     onClick={() => setActiveRange('medium')}
                     >
-                        <span>Last 6 months</span> 
+                        <span
+                        className={`pb-[2px] leading-[1.5] whitespace-nowrap border-b
+                            ${activeRange === 'medium' ? 'border-white' : 'border-transparent'}`}
+                        >Last 6 months</span> 
                     </button>
                     <button
+                    className={`bg-transparent font-medium text-[14px] p-[10px] ${
+                        activeRange === 'long' ? 'text-white' : 'text-[#b3b3b3]'
+                    }`}
                     onClick={() => setActiveRange('long')}
                     >
-                        <span>All time</span> 
+                        <span
+                        className={`pb-[2px] leading-[1.5] whitespace-nowrap border-b
+                            ${activeRange === 'long' ? 'border-white' : 'border-transparent'}`}
+                        >All time</span> 
                     </button>
                 </div>
             </header>
