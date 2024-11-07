@@ -19,11 +19,13 @@ function App() {
       ) : (
         <>
           <Router>
-            <Nav />
-            <Routes>
-              <Route path="/" element={<Profile />} />
-              <Route path="artists" element={<TopArtists />} />
-            </Routes>
+            <div className="pl-0 pb-[50px] md:pl-[100px]">
+              <Nav />
+              <Routes>
+                <Route path="/" element={<Profile />} />
+                <Route path="artists" element={<TopArtists />} />
+              </Routes>
+            </div>
           </Router>
         </>
       )}
