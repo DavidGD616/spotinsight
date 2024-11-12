@@ -10,7 +10,6 @@ const RecentlyPlayed = () => {
         const fetchData = async () => {
             const { data } = await getRecentlyPlayed();
             setRecentlyPlayed(data);
-            console.log(data)
         };
         catchErrors(fetchData());
     }, []);

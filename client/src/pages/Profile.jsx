@@ -39,11 +39,9 @@ const Profile = (profile) => {
         const fetchData = async () => {
             const userTopArtists = await getTopArtists();
             setTopArtists(userTopArtists.data);
-            console.log(userTopArtists.data)
 
             const userTopTracks = await getTopTracks();
             setTopTracks(userTopTracks.data);
-            console.log(userTopTracks.data)
         }
 
         catchErrors(fetchData());

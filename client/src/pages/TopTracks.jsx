@@ -11,7 +11,6 @@ const TopTracks = () => {
         const fetchData = async () => {
             const { data } = await getTopTracks(`${activeRange}_term`);
             settopTracks(data);
-            console.log(data)
         };
         catchErrors(fetchData());
     }, [activeRange]);
