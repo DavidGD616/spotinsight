@@ -124,4 +124,4 @@ export const getTopTracks = (time_range = 'short_term') =>
 
 // Get User Recently Played
 export const getRecentlyPlayed = () =>
-    axios.get('/me/player/recently-played');
+    axios.get('/me/player/recently-played?limit=50');
