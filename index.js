@@ -42,6 +42,7 @@ app.get("/login", (req, res) => {
     "user-top-read",
     "user-follow-read",
     "playlist-read-private",
+    "user-read-recently-played",
   ].join(" ");
 
   const queryParams = querystring.stringify({
