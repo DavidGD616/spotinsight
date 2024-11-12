@@ -121,3 +121,7 @@ export const getTopArtists = (time_range = 'short_term') =>
 // Get User Top Tracks
 export const getTopTracks = (time_range = 'short_term') =>
     axios.get(`/me/top/tracks?time_range=${time_range}&limit=50`)
+
+// Get User Recently Played
+export const getRecentlyPlayed = () =>
+    axios.get('/me/player/recently-played');
