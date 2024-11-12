@@ -88,7 +88,7 @@ const Nav = () => (
         </li>
         <li className="w-full text-[#9B9B9B] text-[11px] h-full grow basis-full">
             <NavLink
-            to='playlists'
+            to='genres'
             className={({ isActive }) =>
               `w-full h-full flex justify-center items-center flex-col p-0 border-l-0 border-t-[3px] border-transparent
               md:block py-[15px] px-0 md:border-l-[5px] md:border-transparent 
@@ -102,7 +102,7 @@ const Nav = () => (
             <div className="mb-[7px] flex items-center justify-center">
               <PlaylistIcon />
             </div>
-              <div>Playlists</div>
+              <div>Genres</div>
             </NavLink>
         </li>
     </ul>
