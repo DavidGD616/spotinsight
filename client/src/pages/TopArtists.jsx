@@ -1,21 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { getTopArtists } from "../spotify";
-import { catchErrors } from "../utils";
+import React from "react";
+import { useTopArtists } from "../hooks";
 import { Main } from "../components";
 import { Link } from "react-router-dom";
 
 const TopArtists = () => {
-    const [topArtists, setTopArtists] = useState(null);
-    const [activeRange, setActiveRange] = useState('short');
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const { data } = await getTopArtists(`${activeRange}_term`);
-            setTopArtists(data);
-        };
-
-        catchErrors(fetchData());
-    }, [activeRange]);
+    const { topArtists, activeRange, setActiveRange } = useTopArtists()
 
     return (
         <Main>
