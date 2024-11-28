@@ -1,23 +1,168 @@
 import React, { useEffect, useState } from "react";
-import { getTopArtists, getGenres } from "../spotify";
+import { Link } from "react-router-dom";
+import { useTopArtists } from "../hooks";
 import { catchErrors } from "../utils";
+import { Main } from "../components";
 
 const Genres = () => {
-    const [genresSeed, setGenresSeed] = useState([]);
-    const [topGenres, setTopGenres] = useState([]);
-    const [topArtists, setTopArtists] = useState(null);
-    const [activeRange, setActiveRange] = useState('short');
+  const { topArtists, activeRange, setActiveRange } = useTopArtists();
+  const [topGenres, setTopGenres] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const { data } = await getGenres();
-            setGenresSeed(data);
-            console.log(data)
-            console.log(data.genres.length)
-        }
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!topArtists) return;
+      const genreArtistsMap = {};
 
-        catchErrors(fetchData())
-    }, [activeRange]);
-}
+      topArtists.items.forEach((artist) => {
+        artist.genres.forEach((genre) => {
+          if (!genreArtistsMap[genre]) {
+            genreArtistsMap[genre] = [];
+          }
+
+          genreArtistsMap[genre].push(artist);
+        });
+      });
+
+      // console.log("Final Genre Counts:", genreCounts);
+
+      const sortedGenres = Object.entries(genreArtistsMap).sort(
+        (a, b) => b[1].length - a[1].length
+      );
+
+      setTopGenres(sortedGenres);
+      console.log("Top Genres:", sortedGenres);
+    };
+
+    catchErrors(fetchData());
+  }, [topArtists]);
+
+  return (
+    <Main>
+      <header className="block md:flex md:justify-between md:items-center">
+        <h2 className="m-0 text-center">Top Genres</h2>
+      </header>
+      <div className="flex justify-around mt-[30px] md:mr-[-11px] pb-8">
+        <button
+          className={`bg-transparent font-medium text-[14px] p-[10px] ${
+            activeRange === "short" ? "text-white" : "text-[#b3b3b3]"
+          }`}
+          onClick={() => setActiveRange("short")}
+        >
+          <span
+            className={`pb-[2px] leading-[1.5] whitespace-nowrap border-b
+                            ${
+                              activeRange === "short"
+                                ? "border-white"
+                                : "border-transparent"
+                            }`}
+          >
+            Last 4 weeks
+          </span>
+        </button>
+        <button
+          className={`bg-transparent font-medium text-[14px] p-[10px] ${
+            activeRange === "medium" ? "text-white" : "text-[#b3b3b3]"
+          }`}
+          onClick={() => setActiveRange("medium")}
+        >
+          <span
+            className={`pb-[2px] leading-[1.5] whitespace-nowrap border-b
+                            ${
+                              activeRange === "medium"
+                                ? "border-white"
+                                : "border-transparent"
+                            }`}
+          >
+            Last 6 months
+          </span>
+        </button>
+        <button
+          className={`bg-transparent font-medium text-[14px] p-[10px] ${
+            activeRange === "long" ? "text-white" : "text-[#b3b3b3]"
+          }`}
+          onClick={() => setActiveRange("long")}
+        >
+          <span
+            className={`pb-[2px] leading-[1.5] whitespace-nowrap border-b
+                            ${
+                              activeRange === "long"
+                                ? "border-white"
+                                : "border-transparent"
+                            }`}
+          >
+            All time
+          </span>
+        </button>
+      </div>
+      <ul>
+        {topGenres.length > 0 ? (
+          topGenres.slice(0, 25).map(([genre, artists], index) => (
+            <li key={index}>
+              <Link
+                className="grid grid-cols-[auto_1fr] items-center mb-[20px] md:mb-[20px] hover:[&>*]:opacity-100 focus:[&>*]:opacity-100"
+                to={`/genre/${genre}`}
+              >
+                <div>
+                  <div className="relative w-16 h-16 mr-[16px]">
+                    {/* First Image */}
+                    {artists[0]?.images?.[0]?.url && (
+                      <img
+                        src={artists[0].images[0].url}
+                        alt={artists[0].name}
+                        className="absolute top-0 left-0 w-8 h-8 rounded-tl-lg"
+                      />
+                    )}
+                    {/* Second Image */}
+                    {artists[1]?.images?.[0]?.url && (
+                      <img
+                        src={artists[1].images[0].url}
+                        alt={artists[1].name}
+                        className="absolute top-0 right-0 w-8 h-8 rounded-tr-lg"
+                      />
+                    )}
+                    {/* Third Image */}
+                    {artists[2]?.images?.[0]?.url && (
+                      <img
+                        src={artists[2].images[0].url}
+                        alt={artists[2].name}
+                        className="absolute bottom-0 left-0 w-8 h-8 rounded-bl-lg"
+                      />
+                    )}
+                    {/* Fourth Image */}
+                    {artists[3]?.images?.[0]?.url && (
+                      <img
+                        src={artists[3].images[0].url}
+                        alt={artists[3].name}
+                        className="absolute bottom-0 right-0 w-8 h-8 rounded-br-lg"
+                      />
+                    )}
+                  </div>
+                </div>
+                <div className="grid grid-cols-[1fr_max-content] gap-[10px]">
+                  <span className="overflow-hidden text-ellipsis whitespace-nowrap pr-[1px]">
+                    {genre && (
+                      <span className="mb-[5px] border-b border-transparent hover:border-white focus:border-white">
+                        {genre}
+                      </span>
+                    )}
+                    <div className="overflow-hidden text-ellipsis whitespace-nowrap pr-[1px] text-[#9B9B9B] text-[14px] mt-[3px]">
+                      {artists
+                        .slice(0, 3)
+                        .map((artist) => artist.name)
+                        .join(", ")}
+                      {artists.length > 3 && " ..."}
+                    </div>
+                  </span>
+                </div>
+              </Link>
+            </li>
+          ))
+        ) : (
+          <p>Loading genres...</p>
+        )}
+      </ul>
+    </Main>
+  );
+};
 
 export default Genres;

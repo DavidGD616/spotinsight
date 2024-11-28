@@ -4,7 +4,7 @@ import { Main } from "../components";
 import { Link } from "react-router-dom";
 
 const TopArtists = () => {
-    const { topArtists, activeRange, setActiveRange } = useTopArtists()
+    const { topArtists, activeRange, setActiveRange } = useTopArtists();
 
     return (
         <Main>
