@@ -23,14 +23,11 @@ const Genres = () => {
         });
       });
 
-      // console.log("Final Genre Counts:", genreCounts);
-
       const sortedGenres = Object.entries(genreArtistsMap).sort(
         (a, b) => b[1].length - a[1].length
       );
 
       setTopGenres(sortedGenres);
-      console.log("Top Genres:", sortedGenres);
     };
 
     catchErrors(fetchData());
@@ -105,36 +102,44 @@ const Genres = () => {
                 <div>
                   <div className="relative w-16 h-16 mr-[16px]">
                     {/* First Image */}
-                    {artists[0]?.images?.[0]?.url && (
+                    {artists[0]?.images?.[0]?.url ? (
                       <img
                         src={artists[0].images[0].url}
                         alt={artists[0].name}
                         className="absolute top-0 left-0 w-8 h-8 rounded-tl-lg"
                       />
+                    ) : (
+                      <div className="absolute top-0 left-0 w-8 h-8 rounded-tl-lg bg-gray-900"></div>
                     )}
                     {/* Second Image */}
-                    {artists[1]?.images?.[0]?.url && (
+                    {artists[1]?.images?.[0]?.url ? (
                       <img
                         src={artists[1].images[0].url}
                         alt={artists[1].name}
                         className="absolute top-0 right-0 w-8 h-8 rounded-tr-lg"
                       />
+                    ) : (
+                      <div className="absolute top-0 right-0 w-8 h-8 rounded-tr-lg bg-gray-900"></div>
                     )}
                     {/* Third Image */}
-                    {artists[2]?.images?.[0]?.url && (
+                    {artists[2]?.images?.[0]?.url ? (
                       <img
                         src={artists[2].images[0].url}
                         alt={artists[2].name}
                         className="absolute bottom-0 left-0 w-8 h-8 rounded-bl-lg"
                       />
+                    ) : (
+                      <div className="absolute bottom-0 left-0 w-8 h-8 rounded-bl-lg bg-gray-900"></div>
                     )}
                     {/* Fourth Image */}
-                    {artists[3]?.images?.[0]?.url && (
+                    {artists[3]?.images?.[0]?.url ? (
                       <img
                         src={artists[3].images[0].url}
                         alt={artists[3].name}
                         className="absolute bottom-0 right-0 w-8 h-8 rounded-br-lg"
                       />
+                    ) : (
+                      <div className="absolute bottom-0 right-0 w-8 h-8 rounded-br-lg bg-gray-900"></div>
                     )}
                   </div>
                 </div>
@@ -142,7 +147,7 @@ const Genres = () => {
                   <span className="overflow-hidden text-ellipsis whitespace-nowrap pr-[1px]">
                     {genre && (
                       <span className="mb-[5px] border-b border-transparent hover:border-white focus:border-white">
-                        {genre}
+                        {genre.charAt(0).toUpperCase() + genre.slice(1)}
                       </span>
                     )}
                     <div className="overflow-hidden text-ellipsis whitespace-nowrap pr-[1px] text-[#9B9B9B] text-[14px] mt-[3px]">
