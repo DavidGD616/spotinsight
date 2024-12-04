@@ -1,37 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useTopArtists } from "../hooks";
-import { catchErrors } from "../utils";
+import { useTopArtists, useTopGenres } from "../hooks";
 import { Main } from "../components";
 
 const Genres = () => {
   const { topArtists, activeRange, setActiveRange } = useTopArtists();
-  const [topGenres, setTopGenres] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!topArtists) return;
-      const genreArtistsMap = {};
-
-      topArtists.items.forEach((artist) => {
-        artist.genres.forEach((genre) => {
-          if (!genreArtistsMap[genre]) {
-            genreArtistsMap[genre] = [];
-          }
-
-          genreArtistsMap[genre].push(artist);
-        });
-      });
-
-      const sortedGenres = Object.entries(genreArtistsMap).sort(
-        (a, b) => b[1].length - a[1].length
-      );
-
-      setTopGenres(sortedGenres);
-    };
-
-    catchErrors(fetchData());
-  }, [topArtists]);
+  const topGenres = useTopGenres(topArtists);
 
   return (
     <Main>
