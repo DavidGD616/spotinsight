@@ -70,8 +70,9 @@ const Genres = () => {
           topGenres.slice(0, 25).map(([genre, artists], index) => (
             <li key={index}>
               <Link
-                className="grid grid-cols-[auto_1fr] items-center mb-[20px] md:mb-[20px] hover:[&>*]:opacity-100 focus:[&>*]:opacity-100"
+                className="grid grid-cols-[auto_1fr] items-center mb-[20px] md:mb-[20px]"
                 to={`/genres/${genre.toLowerCase().replace(/\s+/g, "-")}`}
+                state={{ genre, artists }}
               >
                 <div>
                   <div className="relative w-16 h-16 mr-[16px]">
