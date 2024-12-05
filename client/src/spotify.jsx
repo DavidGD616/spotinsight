@@ -126,6 +126,6 @@ export const getTopTracks = (time_range = 'short_term') =>
 export const getRecentlyPlayed = () =>
     axios.get('/me/player/recently-played?limit=50');
 
-// Get all the genres in Spotify
-export const getGenres = () =>
-    axios.get('/recommendations/available-genre-seeds');
+// Get Artist
+export const getArtist = artistId =>
+    axios.get(`/artists/${artistId}`);

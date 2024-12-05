@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { accessToken } from "./spotify";
-import { TopGenres, Login, Profile, RecentlyPlayed, TopArtists, GenrePage } from "./pages";
+import { TopGenres, Login, Profile, RecentlyPlayed, TopArtists, GenrePage, ArtistPage } from "./pages";
 import "./App.css";
 import { Nav } from "./components";
 import TopTracks from "./pages/TopTracks";
@@ -25,6 +25,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Profile />} />
                 <Route path="artists" element={<TopArtists />} />
+                <Route path="/artist/:artistId" element={<ArtistPage />} />
                 <Route path="tracks" element={<TopTracks />} />
                 <Route path="recent" element={<RecentlyPlayed />} />
                 <Route path="genres" element={<TopGenres />} />
