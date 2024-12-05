@@ -129,3 +129,7 @@ export const getRecentlyPlayed = () =>
 // Get Artist
 export const getArtist = artistId =>
     axios.get(`/artists/${artistId}`);
+
+// Get Artist Album
+export const getArtistAlbum = albumId =>
+    axios.get(`/artists/${albumId}/albums`);

@@ -12,7 +12,6 @@ const ArtistPage = () => {
     const fetchData = async () => {
       const { data } = await getArtist(artistId);
       setArtist(data);
-      console.log(data);
     };
     catchErrors(fetchData());
   }, [artistId]);
