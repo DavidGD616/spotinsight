@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import { getArtist } from "../spotify";
-import { catchErrors } from "../utils";
 import { Main } from "../components";
+import { useArtist, useArtistAlbums } from "../hooks";
 
 const ArtistPage = () => {
   const { artistId } = useParams();
-  const [artist, setArtist] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await getArtist(artistId);
-      setArtist(data);
-    };
-    catchErrors(fetchData());
-  }, [artistId]);
+  const { artist } = useArtist(artistId);
+  const { albums } = useArtistAlbums(artistId);
+  console.log(albums)
 
   return (
     <Main>
@@ -43,6 +36,26 @@ const ArtistPage = () => {
               <p className="text-white text-sm mt-1">0-100 popularity</p>
             </div>
           </div>
+          {/* Albums Section */}
+          <div className="mt-8">
+  <h2 className="text-2xl font-bold mb-4">Albums</h2>
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    {albums.map((album) => (
+      <div key={album.id} className="text-center">
+        <img
+          src={album.images?.[0]?.url}
+          alt={album.name}
+          className="w-full h-25 object-cover rounded-lg"
+        />
+        <p className="text-white text-sm mt-2 font-bold">{album.name}</p>
+        <p className="text-gray-400 text-xs">
+          {new Date(album.release_date).toISOString().split("T")[0]}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
+
         </>
       ) : (
         <div>Loading...</div>

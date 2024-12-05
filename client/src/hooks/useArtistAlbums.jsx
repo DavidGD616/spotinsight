@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getArtistAlbum } from "../spotify";
 import { catchErrors } from "../utils";
 
-const useArtistAlbums = () => {
+const useArtistAlbums = (artistId) => {
     const [albums, setAlbums] = useState([]);
 
     useEffect(() => {
