@@ -7,7 +7,6 @@ const ArtistPage = () => {
   const { artistId } = useParams();
   const { artist } = useArtist(artistId);
   const { albums } = useArtistAlbums(artistId);
-  console.log(albums);
 
   return (
     <Main>
