@@ -133,3 +133,7 @@ export const getArtist = artistId =>
 // Get Artist Album
 export const getArtistAlbum = albumId =>
     axios.get(`/artists/${albumId}/albums`);
+
+// Get Tracks
+export const getTrack = trackId =>
+    axios.get(`/tracks/${trackId}`);
