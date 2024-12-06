@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Main } from "../components";
 import { useArtist, useArtistAlbums } from "../hooks";
 
@@ -44,14 +44,18 @@ const ArtistPage = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {albums.map((album) => (
                 <div key={album.id} className="text-center">
-                  <img
-                    src={album.images?.[0]?.url}
-                    alt={album.name}
-                    className="w-full h-25 object-cover rounded-lg"
-                  />
-                  <p className="text-white text-sm mt-2 font-bold">
-                    {album.name}
-                  </p>
+                  <Link to={`/album/${album.id}`}>
+                    <img
+                      src={album.images?.[0]?.url}
+                      alt={album.name}
+                      className="w-full h-25 object-cover rounded-lg"
+                    />
+                  </Link>
+                  <Link to={`/album/${album.id}`}>
+                    <p className="text-white text-sm mt-2 font-bold">
+                      {album.name}
+                    </p>
+                  </Link>
                   <p className="text-gray-400 text-xs">
                     {new Date(album.release_date).toISOString().split("T")[0]}
                   </p>
