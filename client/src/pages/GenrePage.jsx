@@ -21,7 +21,7 @@ const GenrePage = () => {
           {artists.map((artist, index) => (
             <li key={index}>
               <div className="grid grid-cols-[auto_1fr] items-center mb-[20px] md:mb-[20px]">
-                <Link>
+                <Link to={`/artist/${artist.id}`}>
                   <div>
                     <div className="relative mr-[16px]">
                       <img
@@ -34,7 +34,7 @@ const GenrePage = () => {
                   </Link>
                   <div className="grid grid-cols-[1fr_max-content] gap-[10px]">
                     <span className="overflow-hidden text-ellipsis whitespace-nowrap pr-[1px]">
-                      <Link>
+                      <Link to={`/artist/${artist.id}`}>
                         {artist.name}
                       </Link>
                       <div className="flex flex-wrap gap-2 overflow-hidden text-ellipsis whitespace-normal pr-[1px] text-[#9B9B9B] text-[14px] mt-[3px]">

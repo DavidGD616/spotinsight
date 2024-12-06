@@ -67,7 +67,7 @@ const Profile = (profile) => {
                     <ul>
                         {topArtists.items.slice(0, 10).map((artist, index) => (
                             <Artist key={index}>
-                                <Link
+                                <Link to={`/artist/${artist.id}`}
                                 className="inline-block relative w-[50px] min-w-[50px] mr-[20px]"
                                 >
                                     {artist.images.length && 

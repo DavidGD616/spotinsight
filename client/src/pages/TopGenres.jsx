@@ -71,7 +71,7 @@ const Genres = () => {
             <li key={index}>
               <Link
                 className="grid grid-cols-[auto_1fr] items-center mb-[20px] md:mb-[20px]"
-                to={`/genres/${genre.toLowerCase().replace(/\s+/g, "-")}`}
+                to={`/genre/${genre.toLowerCase().replace(/\s+/g, "-")}`}
                 state={{ genre, artists }}
               >
                 <div>
