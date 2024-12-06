@@ -20,7 +20,7 @@ const ArtistPage = () => {
               className="w-64 h-64 rounded-lg object-cover mb-4"
             />
             <h1 className="text-3xl font-bold">{artist.name}</h1>
-            <p className="text-gray-400">{artist.type}</p>
+            <p className="text-gray-400">{artist.type.charAt(0).toUpperCase() + artist.type.slice(1)}</p>
           </div>
           <div className="mt-8 flex justify-center gap-4">
             <div className="bg-[#282828] rounded-lg p-4 flex flex-col items-center w-full md:w-48 shadow-md">
