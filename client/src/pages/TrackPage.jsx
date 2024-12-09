@@ -7,9 +7,6 @@ import { formatDuration } from "../utils";
 const TrackPage = () => {
   const { trackId } = useParams();
   const { track } = useTracks(trackId);
-
-  console.log(track);
-
   return (
     <Main>
       {track ? (
@@ -21,9 +18,7 @@ const TrackPage = () => {
               className="w-64 h-64 rounded-lg object-cover mb-4"
             />
             <h1 className="text-3xl font-bold">{track.name}</h1>
-            <p className="text-gray-400">
-              {track.album?.artists?.[0].name}
-            </p>
+            <p className="text-gray-400">{track.album?.artists?.[0].name}</p>
           </div>
           <div className="mt-8 flex justify-center gap-4">
             <div className="bg-[#282828] rounded-lg p-4 flex flex-col items-center w-full md:w-48 shadow-md">
