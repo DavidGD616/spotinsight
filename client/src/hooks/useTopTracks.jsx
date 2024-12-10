@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTopTracks } from "../spotify";
 import { catchErrors } from "../utils";
-import { useTopTracks } from ".";
 
 const useTopTracks = () => {
     const [topTracks, settopTracks] = useState(null);
