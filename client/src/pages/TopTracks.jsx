@@ -1,19 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getTopTracks } from "../spotify";
-import { catchErrors } from "../utils";
+import { useTopTracks } from "../hooks";
 import { Loader, Main, TrackItem } from "../components";
 
 const TopTracks = () => {
-    const [topTracks, settopTracks] = useState(null);
-    const [activeRange, setActiveRange] = useState('short');
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const { data } = await getTopTracks(`${activeRange}_term`);
-            settopTracks(data);
-        };
-        catchErrors(fetchData());
-    }, [activeRange]);
+    const { topTracks, activeRange, setActiveRange } = useTopTracks();
 
     return (
         <Main>
