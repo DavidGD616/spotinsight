@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getTopTracks } from "../spotify";
 import { catchErrors } from "../utils";
-import { Main, TrackItem } from "../components";
+import { Loader, Main, TrackItem } from "../components";
 
 const TopTracks = () => {
     const [topTracks, settopTracks] = useState(null);
@@ -61,7 +61,7 @@ const TopTracks = () => {
                         <TrackItem track={track} key={index} />
                     )
                 ) : (
-                    <div>Loading...</div>
+                    <Loader />
                 )}
             </ul>
         </Main>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useTracks } from "../hooks";
-import { Main } from "../components";
+import { Loader, Main } from "../components";
 import { formatDuration } from "../utils";
 
 const TrackPage = () => {
@@ -36,7 +36,7 @@ const TrackPage = () => {
           </div>
         </>
       ) : (
-        <div>Loading...</div>
+        <Loader />
       )}
     </Main>
   );

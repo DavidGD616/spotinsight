@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTopArtists, useTopGenres } from "../hooks";
-import { Main } from "../components";
+import { Loader, Main } from "../components";
 
 const Genres = () => {
   const { topArtists, activeRange, setActiveRange } = useTopArtists();
@@ -138,7 +138,7 @@ const Genres = () => {
             </li>
           ))
         ) : (
-          <p>Loading genres...</p>
+          <Loader />
         )}
       </ul>
     </Main>

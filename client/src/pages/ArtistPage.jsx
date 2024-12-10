@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { Main } from "../components";
+import { Loader, Main } from "../components";
 import { useArtist, useArtistAlbums } from "../hooks";
 
 const ArtistPage = () => {
@@ -64,7 +64,7 @@ const ArtistPage = () => {
           </div>
         </>
       ) : (
-        <div>Loading...</div>
+        <Loader />
       )}
     </Main>
   );

@@ -7,6 +7,15 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes: {
+        dance: {
+          from: { height: '10px' },
+          to: { height: '100%' },
+        },
+      },
+      animation: {
+        dance: 'dance 400ms linear infinite alternate',
+      },
       colors: {
         'green': '#1DB954',
       },

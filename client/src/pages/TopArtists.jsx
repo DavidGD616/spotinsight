@@ -1,6 +1,6 @@
 import React from "react";
 import { useTopArtists } from "../hooks";
-import { Main } from "../components";
+import { Loader, Main } from "../components";
 import { Link } from "react-router-dom";
 
 const TopArtists = () => {
@@ -68,7 +68,7 @@ const TopArtists = () => {
                         </div>
                     ))
                 ) : (
-                    <div>Loading...</div>
+                    <Loader />
                 )}
             </div>
         </Main>

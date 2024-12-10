@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Main, User } from "../components";
+import { Loader, Main, User } from "../components";
 import { getTopArtists, getTopTracks } from "../spotify";
 import { catchErrors } from "../utils";
 import TrackItem from "../components/TrackItem";
@@ -110,7 +110,7 @@ const Profile = (profile) => {
           </Preview>
         </Main>
       ) : (
-        <div>Loading...</div>
+        <Loader />
       )}
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getRecentlyPlayed } from "../spotify";
 import { catchErrors } from "../utils";
-import { Main, TrackItem } from "../components";
+import { Loader, Main, TrackItem } from "../components";
 
 const RecentlyPlayed = () => {
     const [recentlyPlayed, setRecentlyPlayed] = useState(null);
@@ -23,9 +23,7 @@ const RecentlyPlayed = () => {
                         <TrackItem track={track} key={index} />
                     )
                 ) : (
-                    <div>
-                        Loading...
-                    </div>
+                    <Loader />
                 )}
             </ul>
         </Main>
