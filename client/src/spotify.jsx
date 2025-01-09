@@ -42,7 +42,7 @@ const refreshToken = async () => {
         // Logout if there's no refresh token stored or we've managed to get into a reload infinite loop
         if (!LOCALSTORAGE_VALUES.refreshToken ||
             LOCALSTORAGE_VALUES.refreshToken === 'undefined' ||
-            (Date.now() - Number(LOCALSTORAGE_VALUES.timestamp) / 1000) < 1000
+            (Date.now() - (Number(LOCALSTORAGE_VALUES.timestamp) / 1000)) < 1000
         ) {
             console.error('No refresh token available');
             logout();
