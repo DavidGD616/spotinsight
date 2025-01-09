@@ -125,3 +125,5 @@ app.get("/refresh_token", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Express app listening at http://localhost:${PORT}`);
 });
+
+module.exports = app;
