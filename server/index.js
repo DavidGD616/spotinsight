@@ -2,8 +2,17 @@ require("dotenv").config();
 const express = require("express");
 const querystring = require("querystring");
 const axios = require("axios");
+const cors = require("cors");
+
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "https://spotinsight-inky.vercel.app",
+    credentials: true,
+  })
+);
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
