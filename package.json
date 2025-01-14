@@ -1,26 +1,5 @@
 {
-  "name": "spotinsight",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "server": "nodemon api/index.js",
-    "client": "cd client && npm run dev",
-    "postinstall": "cd client && npm install",
-    "build": "NODE_ENV=production cd client/ && npm install && npm run build",
-    "start-server": "node index.js"
-  },
-  "keywords": [],
-  "author": "David Guerrero <davidguerrerodiaz12@gmail.com>",
-  "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.7",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.0"
-  },
-  "devDependencies": {
-    "concurrently": "^9.0.1",
-    "nodemon": "^3.1.7"
+    "axios": "^1.7.9"
   }
 }
